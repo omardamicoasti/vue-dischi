@@ -11,19 +11,38 @@ var app = new Vue({
   el: "#app",
 
   mounted() {
-      axios
-        .get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then((result) => {
-          this.library = result.data.response;
-          console.log(this.library);
-        });
+    axios
+      .get("https://flynn.boolean.careers/exercises/api/array/music")
+      .then((result) => {
+        this.library = result.data.response;
+        for (let i = 0; i < this.library.length; i++) {
+          if (!this.genreLibrary.includes(this.library[i].genre)) {
+            this.genreLibrary.push(this.library[i].genre);
+          }
+        }
+        console.log(this.genreLibrary);
+      });
   },
 
   data: {
     library: "",
+    genreLibrary: ["All"],
+    selectedGenre: "",
   },
 
-  methods: {},
+  methods: {
+    filterGenre(singleAlbum) {
+      if (this.selectedGenre == "") {
+          return true
+      } 
+      return singleAlbum.genre == this.selectedGenre;
+    },
+    onChange(event) {
+      this.selectedGenre = event.target.value;
+    },
+  },
 });
 Vue.config.devtools = true;
+
+
 
