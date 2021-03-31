@@ -16,15 +16,15 @@
     <div id="app" class="container">
         <header>
             <img src="img/spotifyLogo.png" alt="Spotify Logo">
-            <select name="" id="" @change="onChange($event)">
-                <option v-for="(genre, index) in genreLibrary" >{{ genre }}</option>
+            <select :value="selectedGenre" v-model="selectedGenre" >
+                <option v-for="genre in genreLibrary">{{ genre }}</option>
             </select>
         </header>
         <main>
             <div class="wrapper">
                 <div class="albumContainer" v-for="singleAlbum in library" v-if="filterGenre(singleAlbum)">
                     <div class="album">
-                        <img :src="singleAlbum.poster" alt="">
+                        <img :src="singleAlbum.poster" alt="Foto Album">
                         <h4>{{ singleAlbum.title }}</h4>
                         <p>{{ singleAlbum.author }}</p>
                         <p>{{ singleAlbum.year }}</p>

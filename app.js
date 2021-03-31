@@ -20,25 +20,23 @@ var app = new Vue({
             this.genreLibrary.push(this.library[i].genre);
           }
         }
-        console.log(this.genreLibrary);
+        this.library.sort(function(a, b) {return a.year - b.year;});
       });
   },
 
   data: {
     library: "",
     genreLibrary: ["All"],
-    selectedGenre: "",
+    selectedGenre: "All",
   },
 
   methods: {
     filterGenre(singleAlbum) {
-      if (this.selectedGenre == "") {
-          return true
-      } 
-      return singleAlbum.genre == this.selectedGenre;
-    },
-    onChange(event) {
-      this.selectedGenre = event.target.value;
+        if ((this.selectedGenre == singleAlbum.genre) || (this.selectedGenre == "All")) {
+          return true;
+        } else {
+          return false;
+        }
     },
   },
 });

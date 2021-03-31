@@ -37,7 +37,6 @@ main {
     width: 85%;
     height: 100%;
     margin: auto;
-    /* border: 1px solid white; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,13 +59,11 @@ main {
 }
 .album img, .album h4 {
     margin-bottom: 20px;
+    color: white;
 }
 .album > img {
     width: 100%;
     margin-top: 10px;
-}
-.album > h4 {
-    color: white;
 }
 .album > p {
     color: #7a7568;
